@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Login.apps.LoginConfig',
+    'SignUp.apps.SignupConfig',
 )
 
 MIDDLEWARE_CLASSES = (
