@@ -1,10 +1,72 @@
-<html>
-   <head>
-       <title>
-           Home-CareerGuide
-       </title>
-   </head> 
-   <body>
-       <h1>Hello Guys</h1>
-   </body>
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<link href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js' %}"></script>
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+        margin-bottom: 0%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">CareerGuide</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Signup</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Welocme CareerGuide</h1>      
+    <p>Find your CAREER.....</p>
+  </div>
+</div>
+<div class="page-footer">
+    <footer class=" text-center panel-footer ">
+        <h4>&copy RipBeat&BMK|2018</h4>>
+    </footer>
+</div>
+    <script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
+</body>
 </html>
