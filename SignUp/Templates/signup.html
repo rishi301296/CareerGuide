@@ -202,142 +202,142 @@ body{
 }
     
 </style>
-	  
+
 </head>
 <body>
- <div class="container">
- <!---heading---->
-     <header class="heading"> Sign Up Form</header><hr></hr>
-	<!---Form starting----> 
-	<div class="row ">
-	 <!--- For Name---->
-         <div class="col-sm-12">
-             <div class="row">
-			     <div class="col-xs-4">
-          	         <label class="name">Name :</label> </div>
-		         <div class="col-xs-8">
-		             <input type="text" name="name" id="fname" placeholder="Enter your Name" class="form-control ">
-             </div>
-		      </div>
-		 </div>
-		 
-		 
-         <div class="col-sm-12">
-		     <div class="row">
-			     <div class="col-xs-4">
-                     <label class="mobilenumber">Mobile No :</label></div>
-				<div class ="col-xs-8">	 
-		             <input type="text" name="mobileNo" id="lname" placeholder="Enter your Mobile number" class="form-control last">
-                </div>
-		     </div>
-		 </div>
-     <!-----For email---->
-		 <div class="col-sm-12">
-		     <div class="row">
-			     <div class="col-xs-4">
-		             <label class="mail" >Email :</label></div>
-			     <div class="col-xs-8"	>	 
-			          <input type="email" name="email"  id="email"placeholder="Enter your email" class="form-control" >
-		         </div>
-		     </div>
-		 </div>
-     <!------For Date of Birth ----->
-     
-        <div class="col-sm-12">
-		     <div class="row">
-			     <div class="col-xs-4">
-                     <label class="DateOfBirth">Date Of Birth:</label></div>
-				<div class ="col-xs-8">	 
-		             <input type="date" name="dateofbirth" id="dob" class="form-control last">
-                </div>
-		     </div>
-		 </div>   
-	 <!-----For Password and confirm password---->
-          <div class="col-sm-12">
-		         <div class="row">
-				     <div class="col-xs-4">
-		 	              <label class="pass">Password :</label></div>
-				  <div class="col-xs-8">
-			             <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
-				 </div>
-          </div>
-		  </div>
-        
-        <div class="col-sm-12">
-		      <div class="row">
-				     <div class="col-xs-4">
-		 	              <label id = "schoolNamelb">SchoolName: </label></div>
-				  <div class="col-xs-8">
-			             <input type="text" name="schoolname" id="schoolInput" placeholder="Enter your School Name" class="form-control">
-				 </div> 
-                </div>
-		  </div>
-        
-        <div class="col-sm-12">
-		      <div class="row">
-				     <div class="col-xs-4">
-		 	              <label id = "streamNamelb">Stream: </label></div>
-				  <div class="col-xs-8">
-			             <input type="text" name="streamName" id="streamName" placeholder="Enter your Stream Name" class="form-control" >
-				 </div> 
-                </div>
-		  </div>
-        <div class="col-sm-12">
-		      <div class="row">
-				     <div class="col-xs-4">
-		 	              <label id = "entraceExamNamelb">Entrace Examination: </label></div>
-				  <div class="col-xs-8">
-			             <input type="text" name="entraceExamName" id="entraceExamName" placeholder="Enter your Entrance exam" class="form-control" onclick ="Test()">
-				 </div> 
-                </div>
-		  </div>
-        <div class="col-sm-12">
-		      <div class="row">
-				     <div class="col-xs-4">
-		 	              <label id = "examRanklb">Exam Rank: </label></div>
-				  <div class="col-xs-8">
-			             <input type="text" name="examRank" id="examRank" placeholder="Enter your Exam Rank" class="form-control" onclick ="Test()">
-				 </div> 
-                </div>
-		  </div>
-        
-		  
-     <!-----------For Phone number-------->
-         <div class="col-sm-12">
-		     <div class ="row">
-                 <div class="col-xs-4 ">
-			       <label class="gender">Gender:</label>
-				 </div>
-			 
-			     <div class="col-xs-4 male" style="margin-top:5px;">	 
-				     <input type="radio" name="gender"  id="gender" value="boy"><spam style="font-size:14px;color:white;">    Male</spam></input>
-				 </div>
-				 
-				 <div class="col-xs-4 female" id="female_radio" style="margin-top:5px;">
-				     <input type="radio"  name="gender" id="gender" value="girl" ><spam style="font-size:14px;color:white;">    Female</spam></input>
-			     </div>
-			
-		  	 </div>
-		     <div class="col-lg-12">
-                 <div class="row">
-		              <div class="btn col-lg-4 btn-ln btn-warning" style="margin-left: 250px; margin-top: 10px;">Submit</div>
-                 </div>
-		   </div>
-		 </div>
-	 </div>	 
-		 		 
-		 
-</div>
+    <form method="post" action="">
+        {% csrf_token %}
 
-<script>
-    function Test(){
-        var stream_Name = document.getElementById("streamName");
-        if(stream_Name.nodeValue==null){
-            stream_Name.focus();
-        }
-    }
-</script>
-<script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
+        {{ form }}
+
+        <h1> {{ text }} </h1>
+
+        <div class="container">
+        <!---heading---->
+            <header class="heading"> Sign Up Form</header><hr></hr>
+
+            <!---Form starting----> 
+            <div class="row ">
+            <!--- For Name---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="name">Name :</label> </div>
+                        <div class="col-xs-8">
+                            <input type="text" name="name" id="name" placeholder="Enter your Name" class="form-control ">
+                    </div>
+                    </div>
+                </div>
+                
+            <!--- For Mob No---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="mobilenumber">Mobile No :</label></div>
+                        <div class ="col-xs-8">	 
+                            <input type="text" name="mobileNo" id="mobileNo" placeholder="Enter your Mobile number" class="form-control last">
+                        </div>
+                    </div>
+                </div>
+            <!-----For email---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="mail" >Email :</label></div>
+                        <div class="col-xs-8"	>	 
+                            <input type="email" name="email"  id="email" placeholder="Enter your email" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+            <!----For Date of Birth ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class="DateOfBirth">Date Of Birth:</label></div>
+                        <div class ="col-xs-8">	 
+                            <input type="date" name="dateofbirth" id="dateofbirth" class="form-control last">
+                        </div>
+                    </div>
+                </div>   
+            <!-----For Password and confirm password---->
+                <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="pass">Password :</label></div>
+                        <div class="col-xs-8">
+                                <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
+                        </div>
+                </div>
+                </div>
+            <!----- For School Name ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                            <div class="col-xs-4">
+                                <label id = "schoolNamelb">SchoolName: </label></div>
+                        <div class="col-xs-8">
+                                <input type="text" name="schoolName" id="schoolName" placeholder="Enter your School Name" class="form-control">
+                        </div> 
+                        </div>
+                </div>
+            <!----- For Stream ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                            <div class="col-xs-4">
+                                <label id = "streamNamelb">Stream: </label></div>
+                        <div class="col-xs-8">
+                                <input type="text" name="streamName" id="streamName" placeholder="Enter your Stream Name" class="form-control" >
+                        </div> 
+                        </div>
+                </div>
+            <!----- For Entrance Exam ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                            <div class="col-xs-4">
+                                <label id = "entraceExamNamelb">Entrace Examination: </label></div>
+                        <div class="col-xs-8">
+                                <input type="text" name="entraceExamName" id="entraceExamName" placeholder="Enter your Entrance exam" class="form-control">
+                        </div> 
+                        </div>
+                </div>
+            <!----- For Exam Rank ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                            <div class="col-xs-4">
+                                <label id = "examRanklb">Exam Rank: </label></div>
+                        <div class="col-xs-8">
+                                <input type="text" name="examRank" id="examRank" placeholder="Enter your Exam Rank" class="form-control">
+                        </div> 
+                        </div>
+                </div>
+            <!-----------For Gender-------->
+                <div class="col-sm-12">
+                    <div class ="row">
+                        <div class="col-xs-4 ">
+                        <label class="gender">Gender:</label>
+                        </div>
+                    
+                        <div class="col-xs-4 male" style="margin-top:5px;">	 
+                            <input type="radio" name="gender"  id="gender" value="boy"><spam style="font-size:14px;color:white;">    Male</spam></input>
+                        </div>
+                        
+                        <div class="col-xs-4 female" id="female_radio" style="margin-top:5px;">
+                            <input type="radio"  name="gender" id="gender" value="girl" ><spam style="font-size:14px;color:white;">    Female</spam></input>
+                        </div>
+                    
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <button type="submit" class="btn col-lg-4 btn-ln btn-warning" style="margin-left: 250px; margin-top: 10px;">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>	         
+        </div>
+    </form>
+    <script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
 
 </body>		
 </html>

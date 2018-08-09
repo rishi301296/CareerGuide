@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from . import views
+from .views import SignUp
 
 urlpatterns = [
-    url(r'^$', views.sign, name='sign'),
+    url(r'^signup/$', SignUp().get_signup, name='signup'),
 ]
