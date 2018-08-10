@@ -1,332 +1,346 @@
 {% load staticfiles %}
-
 <!Doctype html>
 <html>
-<head>
-     <title>Registration Form</title>
-     	<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
-<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js' %}"></script>
+    <head>
+        <title>Registration Form</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+        <script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js' %}"></script>
+        <style>
+            body{
+            background-image:url(https://s3.envato.com/files/243754334/primag.jpg);
+            background-repeat:no-repeat;
+            background-size:cover;
+            width:100%;
+            height:100vh;
+            overflow:auto;
+            }
+            .container{
+            font-family:Roboto,sans-serif;
+            background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
+            border-style: 1px solid grey;
+            margin: 0 auto;
+            text-align: center;
+            opacity: 0.8;
+            margin-top: 67px;
+            box-shadow: 2px 5px 2px 5px #eee;
+            max-width: 550px;
+            padding-right: 40px;
+            padding-top: 10px;
+            height: 600px;
+            border-radius: 10px;
+            margin-top: 166px;
+            }
+            /*--- for label of first and last name---*/
+            .mobilenumber{
+            margin-left: 1px;
+            font-family: sans-serif;
+            font-size: 14px;
+            color: white;
+            margin-top: 10px;
+            text-align: left;
+            }
+            .name{
+            font-family: sans-serif;
+            font-size: 14px;
+            color: white;
+            margin-top: 5px;
+            text-align: left;
+            }
+            .DateOfBirth{
+            margin-left: 1px;
+            font-family: sans-serif;
+            font-size: 14px;
+            color: white;
+            margin-top: 5px;
+            }
+            #dob{
+            margin-top: 5px;
+            }
+            #lname{
+            margin-top:5px;
+            }
+            /*---for heading-----*/
+            .heading{
+            text-decoration:bold;
+            text-align : center;
+            font-size:30px;
+            color:#F96;
+            padding-top:10px;
+            }
+            /*-------for email----------*/
+            /*------label----*/
+            #email{
+            margin-top: 5px;
+            }
+            /*-----------for Password--------*/
+            /*-------label-----*/
+            .mail{
+            margin-left: 2px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 14px;
+            margin-top: 13px;
+            text-align: left;
+            }
+            #schoolNamelb{
+            margin-left: 2px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 14px;
+            margin-top: 13px;
+            }
+            #schoolInput{
+            margin-top: 6px;
+            }
+            #streamNamelb{
+            margin-left: 2px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 14px;
+            margin-top: 13px;
+            }    
+            #streamName{
+            margin-top: 6px;
+            }    
+            #entraceExamNamelb{
+            margin-left: 1px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 14px;
+            margin-top: 13px;
+            }
+            #entraceExamName{
+            margin-top: 6px;
+            }
+            #examRanklb{
+            margin-left: 5px;
+            font-family: sans-serif;
+            color: white;
+            font-size: 14px;
+            margin-top: 13px;
+            }    
+            #examRank{
+            margin-top: 6px;
+            }
+            .pass{
+            color: white;
+            margin-top: 9px;
+            font-size: 14px;
+            font-family: sans-serif;
+            margin-left: 6px;
+            margin-top: 9px;
+            }
+            #password{
+            margin-top: 6px;
+            }
+            /*------------for phone Number--------*/
+            /*----------label--------*/
+            .pno{
+            font-size: 18px;
+            margin-left: -13px;
+            margin-top: 10px;
+            color: #ff9;
+            }	
+            /*--------------for Gender---------------*/
+            /*--------------label---------*/
+            .genderlb {
+            color: white;
+            font-family: sans-serif;
+            font-size: 14px;
+            margin-left: 2px;
+            margin-top: 8px;
+            }
+            /*---------- for Input type--------*/
+            .col-xs-4.male{
+            color: white;
+            font-size: 13px;
+            margin-top: 9px;
+            padding-bottom: 16px;
+            padding-left: 10px;
+            }
+            .col-xs-4.female {
+            color: white;
+            font-size: 13px;
+            margin-top: 9px;
+            padding-bottom: 16px;
+            padding-right: 50px;
+            padding-left: 10px;
+            }	
+            /*------------For submit button---------*/
+            .sbutton{
+            color: white;
+            font-size: 20px;
+            border: 4px solid white;
+            background-color: #080808;
+            width: 40%;
+            margin-left: 50%;
+            margin-top: 16px;
+            box-shadow: 0px 2px 2px 0px white;
+            }
+            .btn.btn-warning:hover {
+            box-shadow: 2px 1px 2px 3px #99ccff;
+            background:#5900a6;
+            color:#fff;
+            transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
+            }
+        </style>
+    </head>
+    <body>
+        <form method="POST" action="">
+            {% csrf_token %}
 
-<style>
-body{
-	 background-image:url(https://s3.envato.com/files/243754334/primag.jpg);
-	 background-repeat:no-repeat;
-	 background-size:cover;
-	 width:100%;
-	 height:100vh;
-	 overflow:auto;
-	 
-}
-
-.container{
-	font-family:Roboto,sans-serif;
-	  background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
-    
-     border-style: 1px solid grey;
-     margin: 0 auto;
-     text-align: center;
-     opacity: 0.8;
-     margin-top: 67px;
-   box-shadow: 2px 5px 2px 5px #eee;
-     max-width: 550px;
-    padding-right: 40px;
-     padding-top: 10px;
-     height: 600px;
-    border-radius: 10px;
-     margin-top: 166px;
-}
-/*--- for label of first and last name---*/
-.mobilenumber{
-	 margin-left: 1px;
-     font-family: sans-serif;
-     font-size: 14px;
-     color: white;
-     margin-top: 10px;
-    text-align: left;
-}
-.name{
-     font-family: sans-serif;
-     font-size: 14px;
-     color: white;
-     margin-top: 5px;
-    text-align: left;
-}
-.DateOfBirth{
-	 margin-left: 1px;
-     font-family: sans-serif;
-     font-size: 14px;
-     color: white;
-     margin-top: 5px;
-}
-#dob{
-	  margin-top: 5px;
-}
-#lname{
-	 margin-top:5px;
-}
-	  
-
-/*---for heading-----*/
-.heading{
-	 text-decoration:bold;
-	 text-align : center;
-	 font-size:30px;
-	 color:#F96;
-	 padding-top:10px;
-}
-/*-------for email----------*/
-  /*------label----*/
-#email{
-	  margin-top: 5px;
-}
-    
-/*-----------for Password--------*/
-     /*-------label-----*/
-.mail{
-	 margin-left: 2px;
-     font-family: sans-serif;
-     color: white;
-     font-size: 14px;
-     margin-top: 13px;
-    text-align: left;
-}
-#schoolNamelb{
-     margin-left: 2px;
-     font-family: sans-serif;
-     color: white;
-     font-size: 14px;
-     margin-top: 13px;
-}
-#schoolInput{
-    margin-top: 6px;
-
-}
-#streamNamelb{
-     margin-left: 2px;
-     font-family: sans-serif;
-     color: white;
-     font-size: 14px;
-     margin-top: 13px;
-}    
-#streamName{
-    margin-top: 6px;
-}    
-    
-#entraceExamNamelb{
-    margin-left: 1px;
-     font-family: sans-serif;
-     color: white;
-     font-size: 14px;
-     margin-top: 13px;
-}
-#entraceExamName{
-    margin-top: 6px;
-}
-
-#examRanklb{
-    margin-left: 5px;
-     font-family: sans-serif;
-     color: white;
-     font-size: 14px;
-     margin-top: 13px;
-}    
-#examRank{
-    margin-top: 6px;
-}
-.pass{
-	 color: white;
-     margin-top: 9px;
-     font-size: 14px;
-     font-family: sans-serif;
-     margin-left: 6px;
-     margin-top: 9px;
-}
-#password{
- margin-top: 6px;
-}
-/*------------for phone Number--------*/
-      /*----------label--------*/
-.pno{
-	 font-size: 18px;
-     margin-left: -13px;
-     margin-top: 10px;
-     color: #ff9;
-	
-}	
-
-/*--------------for Gender---------------*/
-     /*--------------label---------*/
-.gender {
-	 color: white;
-     font-family: sans-serif;
-     font-size: 14px;
-     margin-left: 2px;
-     margin-top: 8px;
-}
-
-     /*---------- for Input type--------*/
-.col-xs-4.male{
-	 color: white;
-     font-size: 13px;
-     margin-top: 9px;
-     padding-bottom: 16px;
-    padding-left: 10px;
-}
-.col-xs-4.female {
-     color: white;
-     font-size: 13px;
-     margin-top: 9px;
-     padding-bottom: 16px;
-	 padding-right: 50px;
-    padding-left: 10px;
-}	
-/*------------For submit button---------*/
-.sbutton{
-	 color: white;
-     font-size: 20px;
-     border: 4px solid white;
-     background-color: #080808;
-     width: 40%;
-     margin-left: 50%;
-     margin-top: 16px;
-	 box-shadow: 0px 2px 2px 0px white;
-  	   
-   }
-.btn.btn-warning:hover {
-    box-shadow: 2px 1px 2px 3px #99ccff;
-	background:#5900a6;
-	color:#fff;
-	transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
-	
-}
-    
-</style>
-
-</head>
-<body>
-    <form method="post" action="">
-        {% csrf_token %}
-
-        {{ form }}
-
-        <h1> {{ text }} </h1>
-
-        <div class="container">
-        <!---heading---->
-            <header class="heading"> Sign Up Form</header><hr></hr>
-
+            <div class="container">
+            <!---heading---->
+            <header class="heading"> Sign Up Form</header>
+            <hr>
+            </hr>
             <!---Form starting----> 
             <div class="row ">
-            <!--- For Name---->
+                <!--- For Name---->
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-xs-4">
-                            <label class="name">Name :</label> </div>
+                            <label class="name">Name :</label> 
+                        </div>
                         <div class="col-xs-8">
-                            <input type="text" name="name" id="name" placeholder="Enter your Name" class="form-control ">
-                    </div>
-                    </div>
-                </div>
-                
-            <!--- For Mob No---->
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label class="mobilenumber">Mobile No :</label></div>
-                        <div class ="col-xs-8">	 
-                            <input type="text" name="mobileNo" id="mobileNo" placeholder="Enter your Mobile number" class="form-control last">
+                            {{ form.name }}
                         </div>
                     </div>
                 </div>
-            <!-----For email---->
+                <!-----For email---->
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-xs-4">
-                            <label class="mail" >Email :</label></div>
+                            <label class="mail" >Email :</label>
+                        </div>
                         <div class="col-xs-8"	>	 
-                            <input type="email" name="email"  id="email" placeholder="Enter your email" class="form-control" >
+                            {{ form.email }}
                         </div>
                     </div>
                 </div>
-            <!----For Date of Birth ---->
+                <!-----For Password and confirm password---->
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-xs-4">
-                            <label class="DateOfBirth">Date Of Birth:</label></div>
-                        <div class ="col-xs-8">	 
-                            <input type="date" name="dateofbirth" id="dateofbirth" class="form-control last">
+                            <label class="pass">Password :</label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.password }}
                         </div>
                     </div>
-                </div>   
-            <!-----For Password and confirm password---->
-                <div class="col-sm-12">
-                        <div class="row">
-                            <div class="col-xs-4">
-                                <label class="pass">Password :</label></div>
-                        <div class="col-xs-8">
-                                <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control">
-                        </div>
                 </div>
-                </div>
-            <!----- For School Name ---->
+                <!--- For Mob No ---->
                 <div class="col-sm-12">
                     <div class="row">
-                            <div class="col-xs-4">
-                                <label id = "schoolNamelb">SchoolName: </label></div>
-                        <div class="col-xs-8">
-                                <input type="text" name="schoolName" id="schoolName" placeholder="Enter your School Name" class="form-control">
-                        </div> 
+                        <div class="col-xs-4">
+                            <label class="mobilenumber">Mobile No :</label>
                         </div>
+                        <div class ="col-xs-8">	 
+                            {{ form.mobile }}
+                        </div>
+                    </div>
                 </div>
-            <!----- For Stream ---->
+                <!----For Date of Birth ---->
                 <div class="col-sm-12">
                     <div class="row">
-                            <div class="col-xs-4">
-                                <label id = "streamNamelb">Stream: </label></div>
-                        <div class="col-xs-8">
-                                <input type="text" name="streamName" id="streamName" placeholder="Enter your Stream Name" class="form-control" >
-                        </div> 
+                        <div class="col-xs-4">
+                            <label class="DateOfBirth">Date Of Birth:</label>
                         </div>
-                </div>
-            <!----- For Entrance Exam ---->
-                <div class="col-sm-12">
-                    <div class="row">
-                            <div class="col-xs-4">
-                                <label id = "entraceExamNamelb">Entrace Examination: </label></div>
-                        <div class="col-xs-8">
-                                <input type="text" name="entraceExamName" id="entraceExamName" placeholder="Enter your Entrance exam" class="form-control">
-                        </div> 
+                        <div class ="col-xs-8">	 
+                            {{ form.date_of_birth }}
                         </div>
+                    </div>
                 </div>
-            <!----- For Exam Rank ---->
-                <div class="col-sm-12">
-                    <div class="row">
-                            <div class="col-xs-4">
-                                <label id = "examRanklb">Exam Rank: </label></div>
-                        <div class="col-xs-8">
-                                <input type="text" name="examRank" id="examRank" placeholder="Enter your Exam Rank" class="form-control">
-                        </div> 
-                        </div>
-                </div>
-            <!-----------For Gender-------->
+                <!-----------For Gender-------->
                 <div class="col-sm-12">
                     <div class ="row">
                         <div class="col-xs-4 ">
-                        <label class="gender">Gender:</label>
+                            <label class="genderlb">Gender: </label>
                         </div>
-                    
                         <div class="col-xs-4 male" style="margin-top:5px;">	 
-                            <input type="radio" name="gender"  id="gender" value="boy"><spam style="font-size:14px;color:white;">    Male</spam></input>
+                            {{ form.gender }}
                         </div>
-                        
-                        <div class="col-xs-4 female" id="female_radio" style="margin-top:5px;">
-                            <input type="radio"  name="gender" id="gender" value="girl" ><spam style="font-size:14px;color:white;">    Female</spam></input>
-                        </div>
-                    
                     </div>
                 </div>
-
+                <!----- For School Name ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label id = "schoolNamelb">SchoolName: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.school }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Stream ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label id = "streamNamelb">Stream: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.stream }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Entrance Exam ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label id = "entraceExamNamelb">Entrace Examination: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.entrance_exam }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Exam Rank ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label id = "examRanklb">Exam Rank: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.rank }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Address ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class = "name">Address: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.address }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Father's Name ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class = "name">Father's Name: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.father_name }}
+                        </div>
+                    </div>
+                </div>
+                <!----- For Father's Mob ---->
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <label class = "mobilenumber">Father's Mobile: </label>
+                        </div>
+                        <div class="col-xs-8">
+                            {{ form.father_mobile }}
+                        </div>
+                    </div>
+                </div>
+                <!----- Submit button ---->
                 <div class="col-sm-12">
                     <div class="col-lg-12">
                         <div class="row">
@@ -334,12 +348,8 @@ body{
                         </div>
                     </div>
                 </div>
-            </div>	         
-        </div>
-    </form>
-    <script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
-
-</body>		
+            </div>
+        </form>
+        <script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
+    </body>
 </html>
-	 
-	 
