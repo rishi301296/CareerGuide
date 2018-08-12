@@ -1,22 +1,36 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseNotFound, Http404,  HttpResponseRedirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView
 from .forms import LoginForm
-from .models import Current_User
 from django.utils import timezone
+from SignUp.models import Student
+from Home.views import homeView
 
-class loginView(TemplateView):
-    
-    def get(self, request):
-        form = LoginForm()
-        return render(request, 'login.html', {'form' : form})
+template_login = 'login.html'
 
-    def post(self, request):
+def loginView(request):
+    if request.session.has_key('email'):
+        email = request.session['email']
+        return HttpResponseRedirect(reverse('home'))
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            text = form.cleaned_data['email']
-            form.save()
-        args = {'form' : form, 'text' : text}
-        return render(request, 'login.html', args)
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            if login(request, email, password, form):
+                request.session['email'] = email
+                return HttpResponseRedirect(reverse('home'))
+    form = LoginForm()
+    return render(request, template_login, {'form' : form})
+
+def login(request, email, password, form):
+    if Student.objects.all() == None:
+        return False
+    data = Student.objects.all()
+    for data_obj in data:
+        if data_obj.email == email and data_obj.password == password:
+            return True
+    return False

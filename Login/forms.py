@@ -1,10 +1,10 @@
 from django import forms
-from .models import Current_User
+from SignUp.models import Student
 
 class LoginForm(forms.ModelForm):
-    email = forms.CharField(label = 'Email ')
-    password = forms.CharField(label = 'Password ')
+    email = forms.CharField(label = 'Email ', widget=forms.TextInput(attrs={'placeholder' : 'Enter email'}))
+    password = forms.CharField(label = 'Password ', widget=forms.PasswordInput(attrs={'placeholder' : 'Enter password'}))
 
     class Meta:
-        model = Current_User
+        model = Student
         fields = ('email', 'password',)

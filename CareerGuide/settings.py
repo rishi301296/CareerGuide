@@ -110,3 +110,5 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, "static_cdn")
 MEDIA_ROOT = os.path.join(PROJECT_DIR, "media_cdn")
+
+LOGIN_REDIRECT = "/index/"

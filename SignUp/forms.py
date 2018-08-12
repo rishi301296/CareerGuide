@@ -17,7 +17,7 @@ class SignUpForm(forms.ModelForm):
     school = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter high secondary school'}))
     stream = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter stream'}))
     entrance_exam = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter exam name'}))
-    rank = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter rank', 'type' : 'number'}))
+    rank = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter rank', 'type' : 'number'}))
     address = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter address'}))
     father_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s name'}))
     father_mobile = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s mobile No', 'type' : 'number'}))

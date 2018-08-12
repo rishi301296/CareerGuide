@@ -6,16 +6,25 @@ from .models import Student
 from .forms import SignUpForm
 import Home
 
-class SignUp(TemplateView):
-    template_signup = 'signup.html'
-    template_home = 'Home\templates\home.html'
+template_signup = 'signup.html'
+template_home = 'home.html'
 
-    def get(self, request):
-        form = SignUpForm()
-        return render(request, self.template_signup, {'form' : form})
-
-    def post(self, request):
+def signupview(request):
+    if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-        return render(request, self.template_home, {'form' : form})
+            email = form.cleaned_data['email']
+            request.session['email'] = email
+            return render(request, template_home, {'form' : form})
+        else:
+            form = SignUpForm()
+    return redirect(template_signup)
+'''
+def formView(request):
+   if request.session.has_key('email'):
+      username = request.session['email']
+      return redirect(template_home)
+   else:
+      return redirect(template_signup)
+'''

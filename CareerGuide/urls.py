@@ -8,7 +8,7 @@ urlpatterns = [
     # url(r'^$', 'CareerGuide.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^', include('Home.urls')),
+    url(r'^index/', include('Home.urls')),
     url(r'^', include('SignUp.urls')),
     url(r'^login/', include('Login.urls')),
     url(r'^admin/', include(admin.site.urls)),
