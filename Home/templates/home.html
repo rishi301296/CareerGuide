@@ -49,8 +49,13 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="{% url 'login'  %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Signup</a></li>
+        {% if loggedin_student.email %}
+          <li><a href="#"><span ></span> {{ loggedin_student.name }}</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login'  %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Signup</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -64,7 +69,7 @@
 </div>
 <div class="page-footer">
     <footer class=" text-center panel-footer ">
-        <h4>&copy RipBeat&BMK|2018</h4>>
+        <h4>&copy RipBeat&BMK|2018</h4>></p>
     </footer>
 </div>
     <script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
