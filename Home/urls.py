@@ -1,6 +1,7 @@
 from django.conf.urls import url
-from .views import homeView 
+from .views import homeView, logoutView
 
 urlpatterns= [
-    url(r'^', homeView.as_view(template_name = 'home.html'), name='home'),
+    url(r'^/logout/', logoutView, name='logout'),
+    url(r'^/', homeView, name='home'),
 ]

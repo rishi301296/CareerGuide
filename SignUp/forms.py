@@ -1,30 +1,21 @@
 from django import forms
 from .models import Student
-from django.utils.safestring import mark_safe
-
-class HorizontalRadioRenderer(forms.RadioSelect):
-    def render(self):
-        return mark_safe(u'\n'.join([u'%s\n' % w for w in self]))
 
 class SignUpForm(forms.ModelForm):
 
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter name'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder' : 'Enter email'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder' : 'Enter password'}))
-    mobile = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter mobile No', 'type' : 'number'}))
-    date_of_birth = forms.DateTimeField(widget=forms.TextInput(attrs={'placeholder': 'YYYY-MM-DD'}))
-    gender = forms.ChoiceField(widget=forms.RadioSelect(attrs={'class': 'radio-inline'}), choices=(('male', 'Male'),('female', 'Female')))
-    school = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter high secondary school'}))
-    stream = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter stream'}))
-    entrance_exam = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter exam name'}))
-    rank = forms.CharField(required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter rank', 'type' : 'number'}))
-    address = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter address'}))
-    father_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s name'}))
-    father_mobile = forms.CharField(max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s mobile No', 'type' : 'number'}))
-
-    def process(self):
-        data = self.cleaned_data
-        return data
+    name = forms.CharField(label = 'Name', widget=forms.TextInput(attrs={'placeholder' : 'Enter name', 'class' : 'formfield'}))
+    email = forms.EmailField(label = 'Email', widget=forms.TextInput(attrs={'placeholder' : 'Enter email', 'class' : 'formfield'}))
+    password = forms.CharField(label = 'Password', widget=forms.PasswordInput(attrs={'placeholder' : 'Enter password', 'class' : 'formfield'}))
+    mobile = forms.CharField(label = 'Mob No.', max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter mobile No', 'class' : 'formfield'}))
+    date_of_birth = forms.DateField(label = 'Date Of Birth', widget=forms.DateInput(attrs={'placeholder':'YYYY-MM-DD', 'class':'formfield'}))
+    gender = forms.ChoiceField(label = 'Gender', widget=forms.Select(attrs={'class' : 'genderfield'}), choices=[('male','Male'),('female','Female'),('Don\'t want to disclose','Don\'t want to disclose')])
+    school = forms.CharField(label = 'School', widget=forms.TextInput(attrs={'placeholder' : 'Enter high secondary school', 'class' : 'formfield'}))
+    stream = forms.CharField(label = 'Stream', widget=forms.TextInput(attrs={'placeholder' : 'Enter stream', 'class' : 'formfield'}))
+    entrance_exam = forms.CharField(label = 'Entrance Exam', required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter exam name', 'class' : 'formfield'}))
+    rank = forms.CharField(label = 'Exam Rank', required=False, widget=forms.TextInput(attrs={'placeholder' : 'Enter rank', 'class' : 'formfield'}))
+    address = forms.CharField(label = 'Address', widget=forms.TextInput(attrs={'placeholder' : 'Enter address', 'class' : 'formfield'}))
+    father_name = forms.CharField(label = 'Father\'s Name', widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s name', 'class' : 'formfield'}))
+    father_mobile = forms.CharField(label = 'Father\'s Mob No.', max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter father\'s mobile No', 'class' : 'formfield'}))
 
     class Meta:
         model = Student
