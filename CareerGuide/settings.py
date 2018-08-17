@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'Login.apps.LoginConfig',
     'SignUp.apps.SignupConfig',
     'Home.apps.HomeConfig',
+    'Search.apps.SearchConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,6 +107,8 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "media"),
+    
 ]
 
 STATIC_ROOT = os.path.join(PROJECT_DIR, "static_cdn")

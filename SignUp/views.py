@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, reverse, HttpResponseRedirect
-from django.views.generic import TemplateView
 from .models import Student
 from .forms import SignUpForm
 import Home

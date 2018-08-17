@@ -1,0 +1,176 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CareerGuide-Search</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<script src="{% static 'bootstrap-3.3.7-dist\jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js' %}"></script> 
+<link href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+
+  <style>
+    hr{
+      margin-left: 10px;
+      margin-right: 10px;
+      display: block;
+      height: 2px;
+      border: 0;
+      border-top: 2px solid #ccc;
+      padding: 0;
+}
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .collagelist-box{
+      height: 350px;
+      padding: 10px;
+    }
+    .collagelist{
+      
+      background-color: white;
+      width: 100%;
+      height: 400px;
+      border-color: black;
+      border-width: thick;
+      overflow-y: scroll; 
+    }
+    /* Add a gray background color and some padding to the footer */
+    footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+        margin-bottom: 0%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">CareerGuide</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li ><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li class="active"><a href="#">Search</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if loggedin_student.email %}
+          <li><a href="#"><span ></span> {{ loggedin_student.name }}</a></li>
+          <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login'  %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Signup</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron" style="padding-top: 5px;">
+  <div class="container">
+      <center><h2>Find your Future...</h2></center>
+    <div class="row" style="margin-bottom:20px; ">
+      <form>
+        <div class="col-lg-3 col-sm-12">
+            <div class="dropdown">
+              <button class="btn btn-block btn-default btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Location
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" >
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bangalore</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sumerpur</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Delhi</a></li>
+              </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-12">
+            <div class="dropdown">
+              <button class="btn btn-default btn-block  btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Stream
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu" >
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Engnieering</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Management</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Law</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Medical</a></li>
+                
+              </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-12">
+            <div class="dropdown">
+              <button class="btn btn-default btn-block btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Budget
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Less then 4 Lac</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4 Lac to 8 Lac,</a></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">More then 8 Lac </a></li>
+              
+              </ul>
+            </div>
+        </div>
+        <div class="col-lg-3">
+          <button  class="btn btn-block btn-lg btn-success" type="submit" name="SearchSubmit">Search Collage</button> 
+        </div>
+      </form>
+    </div> 
+    <!-- #endregion -->
+    
+    <div class=" row collagelist">
+      {% for i in "0xff" %}
+      <div class="container align-middle">
+        <div class="collagelist-box col-lg-4 ">
+          <img class=" thumbnail img-responsive" src=" {% static 'collage_300.jpg' %}" alt="Collage_Name"/>
+        </div>
+        <div class="collagelist-box col-lg-8">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3>Collage Name</h3>
+              </div>
+              <div class="panel-body">
+                <h3>Collage Body</h3>
+                <h3>Collage Body</h3>
+                <h3>Collage Body</h3>
+                <h3>Collage Body</h3>
+              </div>
+            </div>
+        </div>
+      </div>
+      <hr/>
+      {% endfor %}
+    </div>
+    <!-- #endregion -->
+  </div>
+</div>
+
+<div class="page-footer">
+    <footer class=" text-center panel-footer ">
+        <h4>&copy RipBeat&BMK|2018</h4></p>
+    </footer>
+</div>
+</body>
+</html>

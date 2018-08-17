@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^index', include('Home.urls')),
     url(r'^signup', include('SignUp.urls')),
     url(r'^login/', include('Login.urls')),
+    url(r'^search/', include('Search.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 
