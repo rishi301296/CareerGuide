@@ -10,3 +10,6 @@ class College(models.Model):
     totalStudent = models.IntegerField(default=0)
     placedStudent = models.IntegerField(default=0)
     tuitionFee = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return self.collegeId

@@ -1,5 +1,4 @@
 from django import forms
-from SignUp.models import Student
 
 class LoginForm(forms.Form):
     email = forms.EmailField(label = 'Email ', widget=forms.TextInput(attrs={'placeholder' : 'Enter email'}))

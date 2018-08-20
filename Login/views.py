@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, reverse
 from django.views.generic import TemplateView
 from .forms import LoginForm
 from django.utils import timezone
-from SignUp.models import Student
+from SignUp.models import User_Detail
 import hashlib as h
 from django.conf import settings
 
@@ -19,16 +19,19 @@ def loginView(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
+            role = form.cleaned_data['role']
             hashed_password = (h.md5(str(settings.MD5_SALT+form.cleaned_data['password']).encode())).hexdigest()
             if login(request, email, hashed_password, form):
                 request.session['email'] = email
+                if role == 'admin':
+                    return HttpResponseRedirect(reverse('adminRequests'))
                 return HttpResponseRedirect(reverse('home'))
     else:
         form = LoginForm()
     return render(request, template_login, {'form' : form})
 
 def login(request, Email, Password, form):
-    data = Student.objects.filter(email = Email)
+    data = User_Detail.objects.filter(email = Email)
     if data[0].password == Password:
         return True
     return False
