@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'SignUp.apps.SignupConfig',
     'Home.apps.HomeConfig',
     'Search.apps.SearchConfig',
+    'Admin',
 )
 
 MIDDLEWARE_CLASSES = (

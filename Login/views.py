@@ -14,24 +14,31 @@ template_login = 'login.html'
 
 def loginView(request):
     if request.session.has_key('email'):
+        email = request.session['email']
+        role = (User_Detail.objects.filter(email = email)[0]).role
+        if role == 'admin':
+            return HttpResponseRedirect(reverse('adminRequests'))
         return HttpResponseRedirect(reverse('home'))
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            role = form.cleaned_data['role']
             hashed_password = (h.md5(str(settings.MD5_SALT+form.cleaned_data['password']).encode())).hexdigest()
-            if login(request, email, hashed_password, form):
+            if login(request, email, hashed_password):
                 request.session['email'] = email
-                if role == 'admin':
+                settings.LOGGED_IN = User_Detail.objects.filter(email = email)[0]
+                if settings.LOGGED_IN.role == 'admin':
                     return HttpResponseRedirect(reverse('adminRequests'))
                 return HttpResponseRedirect(reverse('home'))
     else:
         form = LoginForm()
     return render(request, template_login, {'form' : form})
 
-def login(request, Email, Password, form):
+def login(request, Email, Password):
     data = User_Detail.objects.filter(email = Email)
-    if data[0].password == Password:
-        return True
+    try:
+        if data[0].password == Password:
+            return True
+    except IndexError:
+        return False
     return False

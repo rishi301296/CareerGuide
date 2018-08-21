@@ -6,7 +6,7 @@ class SignUpForm(forms.ModelForm):
     email = forms.EmailField(label = 'Email', widget=forms.TextInput(attrs={'placeholder' : 'Enter email', 'class' : 'formfield'}))
     password = forms.CharField(label = 'Password', widget=forms.PasswordInput(attrs={'placeholder' : 'Enter password', 'class' : 'formfield'}))
     mobile = forms.CharField(label = 'Mob No.', max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter mobile No', 'class' : 'formfield'}))
-    role = forms.ChoiceField(label = 'Role', widget=forms.Select(attrs={'class' : 'genderfield'}), choices=[('admin','Admin'),('user','User'),])
+    role = forms.ChoiceField(label = 'Role', widget=forms.Select(attrs={'class' : 'formfield'}), choices=[('admin','Admin'),('user','User'),])
 
     class Meta:
         model = User_Detail
