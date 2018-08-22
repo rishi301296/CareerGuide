@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^signup', include('SignUp.urls')),
     url(r'^login/', include('Login.urls')),
     url(r'^search/', include('Search.urls')),
-    url(r'^adminProfile/', include('Admin.urls')),
+    url(r'^adminProfile', include('Admin.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 

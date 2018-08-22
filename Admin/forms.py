@@ -6,3 +6,9 @@ class RequestsForm(forms.Form):
             label = '', 
             choices = [(True,'Accept'),(False,'Reject'),]
         )
+
+class UpdateDbForm(forms.Form):
+    file = forms.FileField(
+        label = 'Select csv file',
+        help_text = 'College details file .csv'
+        )

@@ -1,6 +1,7 @@
 from django.conf.urls import url
-from . import views
+from .views import updateDbView,requestsView
 
 urlpatterns = [
-    url(r'^', views.requestsView, name='adminRequests'),
+    url(r'^/updatedb/', updateDbView, name='updatedb'),
+    url(r'^/', requestsView, name='adminRequests'),
 ]
