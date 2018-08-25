@@ -23,6 +23,9 @@ def requestsView(request):
                     item = (User_Authentication.objects.filter(email = qset[c]))[0]
                     User_Detail.objects.create(name = item.name, email = item.email, mobile = item.mobile, password = item.password, role = 'admin')
                     item.delete()
+                elif str(ans[i]) == 'Delete':
+                    item = (User_Authentication.objects.filter(email = qset[c]))[0]
+                    item.delete()
                 c+=1
     return render(request, 'admin.html', {
         'loggedin_student' : settings.LOGGED_IN,
