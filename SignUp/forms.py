@@ -2,11 +2,38 @@ from django import forms
 from .models import User_Detail, User_Authentication
 
 class SignUpForm(forms.ModelForm):
-    name = forms.CharField(label = 'Name', widget=forms.TextInput(attrs={'placeholder' : 'Enter name', 'class' : 'formfield'}))
-    email = forms.EmailField(label = 'Email', widget=forms.TextInput(attrs={'placeholder' : 'Enter email', 'class' : 'formfield'}))
-    password = forms.CharField(label = 'Password', widget=forms.PasswordInput(attrs={'placeholder' : 'Enter password', 'class' : 'formfield'}))
-    mobile = forms.CharField(label = 'Mob No.', max_length=10, min_length=10, widget=forms.TextInput(attrs={'placeholder' : 'Enter mobile No', 'class' : 'formfield'}))
-    role = forms.ChoiceField(label = 'Role', widget=forms.Select(attrs={'class' : 'formfield'}), choices=[('admin','Admin'),('user','User'),])
+    name = forms.CharField(
+        label = 'Name',
+        widget = forms.TextInput(
+            attrs={'placeholder' : 'Enter name', 'class' : 'formfield'}
+        )
+    )
+    email = forms.EmailField(
+        label = 'Email',
+        widget = forms.TextInput(
+            attrs={'placeholder' : 'Enter email', 'class' : 'formfield'}
+        )
+    )
+    password = forms.CharField(
+        label = 'Password',
+        widget = forms.PasswordInput(
+            attrs = {'placeholder' : 'Enter password', 'class' : 'formfield'}
+        )
+    )
+    mobile = forms.CharField(
+        label = 'Mob No.',
+        max_length = 10,
+        min_length = 10,
+        widget = forms.TextInput(
+            attrs={'placeholder' : 'Enter mobile No', 'class' : 'formfield'}
+        )
+    )
+    role = forms.ChoiceField(
+        label = 'Role',
+        widget = forms.Select(
+            attrs = {'class' : 'formfield'}),
+            choices = [('admin','Admin'),('user','User'),]
+    )
 
     class Meta:
         model = User_Detail

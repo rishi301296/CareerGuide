@@ -7,44 +7,38 @@
         <link href="{% static 'bootstrap-3.3.7-dist\css\bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
         <script src="{% static 'bootstrap-3.3.7-dist\js\bootstrap.min.js' %}"></script>
         <style>
-            body{
-            background-image:url(https://s3.envato.com/files/243754334/primag.jpg);
-            background-repeat:no-repeat;
-            background-size:cover;
-            width:100%;
-            height:700px;
-            overflow:auto;
+            .btn-ln{
+                color: #080808;
+                font-weight: bold;
+                height: 40px;
+                border-color: dimgray;
+                margin-left: 100px;
             }
             .container{
-            font-family:Roboto,sans-serif;
-            background-image:url(https://image.freepik.com/free-vector/dark-blue-blurred-background_1034-589.jpg) ;
-            border-style: 1px solid grey;
-            margin: 0 auto;
-            text-align: center;
-            opacity: 0.8;
-            box-shadow: 2px 5px 2px 5px #eee;
-            max-width: 550px;
-            padding-right: 40px;
-            padding-top: 10px;
-            height: 650px;
-            border-radius: 10px;
-            margin-top: 50px;
+                font-family:Roboto,sans-serif;
+                border: 5px solid grey;
+                margin: 0 auto;
+                text-align: center;
+                background-color: darkgray;
+                opacity: 0.8;
+                max-width: 950px;
+                padding: 15px;
+                border-radius: 10px;
+                margin-top: 50px;
+                margin-bottom: 50px;
             }
-            
-            /*---for heading-----*/
             .heading{
-            text-decoration:bold;
-            text-align : center;
-            font-size:30px;
-            color:#F96;
-            padding-top:10px;
+                text-decoration:bold;
+                text-align : center;
+                font-size:30px;
+                font-weight:bold;
+                color: black;
             }
             label{
-            margin-left: 2px;
-            font-family: sans-serif;
-            color: white;
-            font-size: 14px;
-            margin-top: 13px;
+                font-family: sans-serif;
+                color:#080808;
+                font-size: 14px;
+                margin-top: 13px;
             }
             .formfield{
                 color: #080808;
@@ -52,21 +46,16 @@
                 background-color:white;
                 font-family: sans-serif;
                 font-weight: bold;
+                padding-top: 10px;
+                align-content: flex-start;
             }
-            .genderfield {
-                margin-left: -145px;
-                margin-bottom: 5px;
-                height: 25px;
-                color: #080808;
-                border-radius: 7px;
-                background-color:white;
-                font-family: sans-serif;
-                font-weight: bold;
+            select {
+                padding: 10px;
+                width: 80%;
             }
             input {
-                padding-left: 10px;
-                padding-right: 10px;
-                width: 100%;
+                padding: 10px;
+                width: 80%;
             }
             .error-message{
                 margin-top: 10px;
@@ -75,67 +64,87 @@
                 font-size: 15px;
                 font-weight: bold;
             }
-            /*------------For submit button---------*/
             .sbutton{
-            color: white;
-            font-size: 20px;
-            border: 4px solid white;
-            background-color: #080808;
-            width: 40%;
-            margin-left: 50%;
-            margin-top: 16px;
-            box-shadow: 0px 2px 2px 0px white;
+                color: white;
+                font-size: 20px;
+                border: 4px solid white;
+                background-color: #080808;
+                width: 40%;
+                margin-left: 50%;
+                margin-top: 16px;
+                box-shadow: 0px 2px 2px 0px white;
             }
             .btn.btn-warning:hover {
-            box-shadow: 2px 1px 2px 3px #99ccff;
-            background:#5900a6;
-            color:#fff;
-            transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
+                box-shadow: 2px 1px 2px 3px #99ccff;
+                background:#5900a6;
+                color:#fff;
+                transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
             }
         </style>
     </head>
-    
     <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                    </button>
+                    <a class="navbar-brand" href="#">CareerGuide</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <form method="POST" action="">
             {% csrf_token %}
-
             <div class="container">
-            <!---heading---->
-            <header class="heading"> Sign Up Form</header>
-            <hr>
-            </hr>
-            <!---Form starting----> 
-            <div class="row ">
-                {% for data in form %}
-                <!--- For Fields---->
-                <div class="col-sm-12">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <label class="label">{{ data.label_tag }}</label> 
-                        </div>
-                        <div class="col-xs-8">
-                            {{ data }}
-                        </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <header class="heading"> Sign Up </header>
                     </div>
-                </div>
-                {% endfor %}
-                <div class="col-sm-12">
-                    <div class="error-message">
-                        <div class="col-xs-4"></div>
-                        <div class="col-xs-8">
-                            {% if form.errors %}
-                                {% for error, error_message in form.errors.items %}
-                                    {{ error_message|striptags }}
-                                {% endfor %}
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-                <!----- Submit button ---->
-                <div class="col-sm-12">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <button type="submit" class="btn col-lg-4 btn-ln btn-warning" style="margin-left: 250px; margin-top: 10px;">Submit</button>
+                    <div class="panel-body">
+                        <div class="row ">
+                            {% for data in form %}
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label>{{ data.label_tag }}</label> 
+                                </div>
+                                <div class="col-lg-8 ">
+                                    <div class="formfield">
+                                        {{ data }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="col-sm-12">
+                                <div class="error-message">
+                                    <div class="col-xs-4"></div>
+                                    <div class="col-xs-8 input-group">
+                                        {% if form.errors %}
+                                        {% for error, error_message in form.errors.items %}
+                                        {{ error_message|striptags }}
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-offset-4">
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <button type="submit" class="btn btn-ln col-lg-12 btn-warning" style="margin-left: 250px; margin-top: 10px;">Submit</button>
+                                </div>
+                                <div class="col-lg-offset-4">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

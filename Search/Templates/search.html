@@ -86,11 +86,12 @@
   <div class="container">
       <center><h2>Find your Future...</h2></center>
     <div class="row" style="margin-bottom:20px; ">
-      <form>
+      <form method="POST" action="">
+          {% csrf_token %}
         <div class="col-lg-3 col-sm-12">
             <div class="dropdown">
-              <button class="btn btn-block btn-default btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Location
-                <span class="caret"></span>
+              <button class="btn btn-block btn-default btn-lg dropdown-toggle" type="button" id="location" data-toggle="dropdown">
+                <span class="caret">Location</span>
               </button>
               <ul class="dropdown-menu" role="menu" >
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bangalore</a></li>
@@ -104,7 +105,7 @@
 
         <div class="col-lg-3 col-sm-12">
             <div class="dropdown">
-              <button class="btn btn-default btn-block  btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Stream
+              <button class="btn btn-default btn-block  btn-lg dropdown-toggle" type="button" id="stream" data-toggle="dropdown">Stream
               <span class="caret"></span></button>
               <ul class="dropdown-menu" >
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Engnieering</a></li>
@@ -121,7 +122,7 @@
 
         <div class="col-lg-3 col-sm-12">
             <div class="dropdown">
-              <button class="btn btn-default btn-block btn-lg dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Budget
+              <button class="btn btn-default btn-block btn-lg dropdown-toggle" type="button" id="budget" data-toggle="dropdown">Budget
               <span class="caret"></span></button>
               <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Less then 4 Lac</a></li>

@@ -8,6 +8,81 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <style>
+          .btn-ln{
+              color: #080808;
+              font-weight: bold;
+              height: 40px;
+              border-color: dimgray;
+              margin-left: 100px;
+          }
+          .container{
+          font-family:Roboto,sans-serif;
+          border: 5px solid grey;
+          margin: 0 auto;
+          text-align: center;
+          background-color: darkgray;
+          opacity: 0.8;
+          max-width: 950px;
+          padding: 15px;
+          height: 350px;
+          border-radius: 10px;
+          margin-top: 50px;
+          }
+          .heading{
+          text-decoration:bold;
+          text-align : center;
+          font-size:30px;
+          font-weight:bold;
+          color: black;
+          }
+          label{
+          font-family: sans-serif;
+          color:#080808;
+          font-size: 14px;
+          margin-top: 13px;
+          }
+          .formfield{
+              color: #080808;
+              border-radius: 7px;
+              background-color:white;
+              font-family: sans-serif;
+              font-weight: bold;
+              padding-top: 10px;
+              align-content: flex-start;
+          }
+          option {
+              max-width: 100%;
+          }
+          input {
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              width: 80%;
+          }
+          .error-message{
+              margin-top: 10px;
+              margin-bottom: 45px;
+              color: red;
+              font-size: 15px;
+              font-weight: bold;
+          }
+          .sbutton{
+          color: white;
+          font-size: 20px;
+          border: 4px solid white;
+          background-color: #080808;
+          width: 40%;
+          margin-left: 50%;
+          margin-top: 16px;
+          box-shadow: 0px 2px 2px 0px white;
+          }
+          .btn.btn-warning:hover {
+          box-shadow: 2px 1px 2px 3px #99ccff;
+          background:#5900a6;
+          color:#fff;
+          transition: background-color 1.15s ease-in-out,border-color 1.15s ease-in-out,box-shadow 1.15s ease-in-out;
+          }
          h4 {
          background-color: #5cb85c;
          color:white !important;
@@ -17,19 +92,73 @@
       </style>
    </head>
    <body>
-      <div class="container">
-         <h2>Career Guide</h2>
-         <div class="row">
-            <div class="panel-body col-lg-8" style="padding:40px 50px;">
-               <form method="POST" action="">
-                 {% csrf_token %}
-                  {{ form.as_p }}
-                  <button type="submit"><span class="glyphicon glyphicon-off"></span> Login</button>
-                </form>
-                <h2 > {{ text }} </h2>
-
+      <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+              <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="#">CareerGuide</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                  <li><a href="{% url 'home' %}">Home</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">Gallery</a></li>
+                  <li><a href="#">Contact</a></li>
+              </ul>
+              </div>
+          </div>
+      </nav>
+      <form method="POST" action="">
+          {% csrf_token %}
+          <div class="container">
+            <div class="panel panel-success">
+              <div class="panel-heading">
+                  <header class="heading"> Log in </header>
+              </div>
+              <div class="panel-body">
+                  <div class="row ">
+                      {% for data in form %}
+                      <div class="row">
+                          <div class="col-lg-4">
+                              <label class="label">{{ data.label_tag }}</label> 
+                          </div>
+                          <div class="col-lg-8 ">
+                              <div class="formfield">
+                                  {{ data }}
+                              </div>
+                          </div>
+                      </div>
+                      {% endfor %}
+                      <div class="col-sm-12">
+                          <div class="error-message">
+                              <div class="col-xs-4"></div>
+                              <div class="col-xs-8 input-group">
+                                  {% if form.errors %}
+                                      {% for error, error_message in form.errors.items %}
+                                          {{ error_message|striptags }}
+                                      {% endfor %}
+                                  {% endif %}
+                              </div>
+                          </div>
+                      </div>
+                      <!----- Submit button ---->
+                      <div class="row">
+                          <div class="col-lg-offset-4">
+                          </div>
+                          <div class="col-lg-6 ">
+                                  <button type="submit" class="btn btn-ln col-lg-12 btn-warning" style="margin-left: 250px; margin-top: 10px;">Submit</button>
+                          </div>
+                          <div class="col-lg-offset-4">
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
-         </div>
-      </div>
+          </div>
+      </form>
    </body>
 </html>

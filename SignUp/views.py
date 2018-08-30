@@ -18,7 +18,6 @@ def signupview(request):
         form2 = AuthForm(request.POST)
         if form.is_valid() and form2.is_valid():
             role = form.cleaned_data['role']
-            request.session['email'] = email
             if role == 'user':
                 data = form.save(commit = False)
                 email = form.cleaned_data['email']
@@ -28,9 +27,11 @@ def signupview(request):
                 settings.LOGGED_IN = User_Detail.objects.filter(email = email)[0]
             else:
                 data = form2.save(commit = False)
+                email = form2.cleaned_data['email']
                 hashed_password = (h.md5(str(settings.MD5_SALT+form2.cleaned_data['password']).encode())).hexdigest()
                 data.password = hashed_password
                 data.save()
+            request.session['email'] = email
             return HttpResponseRedirect(reverse('home'))
     else:
         form = SignUpForm()
