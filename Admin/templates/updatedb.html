@@ -19,7 +19,7 @@
       border: 0;
       border-top: 2px solid #ccc;
       padding: 0;
-}
+    }
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -47,6 +47,15 @@
         left: 0;
         bottom: 0;
         width: 100%;
+    }
+    .loader {
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid #3498db;
+        width: 120px;
+        height: 120px;
+        -webkit-animation: spin 2s linear infinite; /* Safari */
+        animation: spin 2s linear infinite;
     }
   </style>
 </head>
@@ -88,32 +97,41 @@
       <div class="container align-middle">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3>Check Authorization</h3>
+              <h3>Check Authorization</h3>
             </div>
             <div class="panel-body">
-                <div class="collagelist-box col-lg-12">
-                  <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
-                        <div class="col-md-8">
-                            <input type="file" name="csv_file" id="csv_file" required="True" class="form-control">
-                        </div>                    
+              <div class="collagelist-box col-lg-12">
+                <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal"> 
+                  {% csrf_token %}
+                    <div class="col-lg-6">
+                      {{ form.course.label_tag }}  {{ form.course }}  {{ form.course.errors }}
                     </div>
-                    <div class="form-group">                    
-                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
-                             <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
-                        </div> 
+                    <div class="col-lg-6">
+                      {{ form.tableType.label_tag }}  {{ form.tableType }}  {{ form.tableType.errors }}
                     </div>
-                  </form>
-                </div>
+                  <div class="form-group">
+                      <label for="name" class="col-md-3 col-sm-3 col-xs-12 control-label">File: </label>
+                      <div class="col-md-8">
+                          {{ form.file }} {{ form.file.errors }}
+                          {{ form.file.help_text }}
+                      </div>                    
+                  </div>
+                  <div class="form-group">                    
+                      <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3" style="margin-bottom:10px;">
+                        {% if upload == "True" %}
+                            <button class="btn btn-primary" disabled> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                        {% else %}
+                            <button class="btn btn-primary"> <span class="glyphicon glyphicon-upload" style="margin-right:5px;"></span>Upload </button>
+                        {% endif %}
+                      </div> 
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>
-
-    
-
 <div class="page-footer">
     <footer class=" text-center panel-footer ">
         <h4>&copy RipBeat&BMK|2018</h4></p>
